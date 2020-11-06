@@ -3,19 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import Layout from './layout/index'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 import 'antd/dist/antd.css';
 
+import Layout from './layout/index'
+import Menu from './page/menu'
+import Blog from './page/blog'
+import Book from './page/book'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout />
+      <HashRouter>
+        <Switch>
+            <Route path="/">
+                <Layout>
+                    <Route path="/menu" component={Menu}></Route>
+                    <Route path="/blog" component={Blog}></Route>
+                    <Route path="/book" component={Book}></Route>
+                </Layout>
+            </Route>
+        </Switch>
+      </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
