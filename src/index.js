@@ -8,23 +8,23 @@ import 'antd/dist/antd.css';
 
 import Layout from './layout/index'
 import Menu from './page/menu'
-import Blog from './page/blog'
+import Blog from './page/Blog/blog'
+import addBlog from './page/Blog/add'
 import Book from './page/book'
 
 ReactDOM.render(
-  <React.StrictMode>
-      <HashRouter>
-        <Switch>
-            <Route path="/">
-                <Layout>
-                    <Route path="/menu" component={Menu}></Route>
-                    <Route path="/blog" component={Blog}></Route>
-                    <Route path="/book" component={Book}></Route>
-                </Layout>
-            </Route>
-        </Switch>
-      </HashRouter>
-  </React.StrictMode>,
+  <HashRouter>
+    <Switch>
+        <Route path="/">
+            <Layout>
+                <Route path="/menu" component={Menu}></Route>
+                <Route path="/blog" component={Blog}></Route>
+                <Route path="/book" component={Book}></Route>
+                <Route path="/addBlog" component={addBlog}></Route>
+            </Layout>
+        </Route>
+    </Switch>
+  </HashRouter>,
   document.getElementById('root')
 );
 
