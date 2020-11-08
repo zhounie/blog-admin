@@ -1,11 +1,11 @@
 import { Table, Form, Input, Button, Space, Tag, Row, Col, Modal, Select, message, Popconfirm, DatePicker } from 'antd'
 import { SearchOutlined } from '@ant-design/icons';
-import { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { getBlogList, addBlog, deleteBlog } from '../../api/index'
 
 const { Option  } = Select
 
-export default function Book () {
+export default function Book (props) {
     const [data, setData] = useState([])
     const [visible, setVisible] = useState(false)
     const [searchParams, setSearchParams] = useState({})
@@ -13,7 +13,6 @@ export default function Book () {
     useEffect(() => {
         onGetList()
     }, [searchParams])
-    
     const [form] = Form.useForm()
     const columns = [
         {
@@ -43,6 +42,7 @@ export default function Book () {
             key: 'action',
             render: (row) => (
                 <Space>
+                    <Button success="true" onClick={() => onEditArticle(row)}>edit article</Button>
                     <Popconfirm
                         placement="topRight"
                         title="delete"
@@ -108,6 +108,11 @@ export default function Book () {
             } else {
                 message.error(res.msg)
             }
+        })
+    }
+    const onEditArticle = (row) => {
+        props.history.push({
+            pathname: `/addBlog/${row.id}`
         })
     }
     return (

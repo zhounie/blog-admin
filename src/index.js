@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import 'antd/dist/antd.css';
+import { Modal } from 'antd'
 
 import Layout from './layout/index'
 import Menu from './page/menu'
@@ -20,7 +21,7 @@ ReactDOM.render(
                 <Route path="/menu" component={Menu}></Route>
                 <Route path="/blog" component={Blog}></Route>
                 <Route path="/book" component={Book}></Route>
-                <Route path="/addBlog" component={addBlog}></Route>
+                <Route path="/addBlog/:id" component={addBlog}></Route>
             </Layout>
         </Route>
     </Switch>
