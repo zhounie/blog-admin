@@ -1,5 +1,3 @@
-import 'editor.md/css/editormd.css'
-// import editormd from 'editor.md/editormd.js'
 import React, { Component } from 'react'
 import { getBlogDetail, saveBlogDetail } from '../../api/index'
 import { Prompt } from 'react-router-dom'
