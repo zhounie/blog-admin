@@ -4,11 +4,13 @@
 const qs = require('qs')
 
 const Fetch = (url, method, params) => {
+    const token = sessionStorage.getItem('token')
     return new Promise((resolve, reject) => {
         let options = {
             method: method,
             headers:{
-                'Content-Type':'application/json;charset=UTF-8'
+                'Content-Type':'application/json;charset=UTF-8',
+                'Authorization': token
             }
         }
         if (method === 'POST') {
