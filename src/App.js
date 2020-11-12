@@ -1,11 +1,11 @@
 import React from 'react'
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { HashRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import './App.css';
 
 import Layout from './layout/index'
 import Menu from './page/menu'
 import Blog from './page/Blog/blog'
-import addBlog from './page/Blog/add'
+import AddBlog from './page/Blog/add'
 import Book from './page/book'
 import Login from './page/login'
 
@@ -18,29 +18,29 @@ function App() {
           <Route path="/">
               <Layout>
                   <Route path="/menu" component={
-                    () => {
-                      return sessionStorage.getItem('token') ? <Menu /> : <Redirect to={{
+                    (props) => {
+                      return sessionStorage.getItem('token') ? <Menu {...props} /> : <Redirect to={{
                         pathname: '/login'
                       }} />
                     }
                   }></Route>
                   <Route path="/blog" component={
-                    () => {
-                      return sessionStorage.getItem('token') ? <Blog /> : <Redirect to={{
+                    (props) => {
+                      return sessionStorage.getItem('token') ? <Blog {...props} /> : <Redirect to={{
                         pathname: '/login'
                       }} />
                     }
                   }></Route>
                   <Route path="/book" component={
-                    () => {
-                      return sessionStorage.getItem('token') ? <Book /> : <Redirect to={{
+                    (props) => {
+                      return sessionStorage.getItem('token') ? <Book {...props} /> : <Redirect to={{
                         pathname: '/login'
                       }} />
                     }
                   }></Route>
                   <Route path="/addBlog/:id" component={
-                    () => {
-                      return sessionStorage.getItem('token') ? <addBlog /> : <Redirect to={{
+                    (props) => {
+                      return sessionStorage.getItem('token') ? <AddBlog {...props} /> : <Redirect to={{
                         pathname: '/login'
                       }} />
                     }

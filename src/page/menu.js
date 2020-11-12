@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function Book () {
+export default function Menu (props) {
+    console.log(props);
     return (
         <div>
             menu

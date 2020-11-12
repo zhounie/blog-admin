@@ -2,10 +2,10 @@ import { Table, Form, Input, Button, Space, Tag, Row, Col, Modal, Select, messag
 import { SearchOutlined } from '@ant-design/icons';
 import React, { useEffect, useState, useRef } from 'react'
 import { getBlogList, addBlog, deleteBlog } from '../../api/index'
-
 const { Option  } = Select
 
 export default function Book (props) {
+    console.log(props);
     const [data, setData] = useState([])
     const [visible, setVisible] = useState(false)
     const [searchParams, setSearchParams] = useState({})
@@ -111,13 +111,13 @@ export default function Book (props) {
         })
     }
     const onEditArticle = (row) => {
+        console.log(props)
         props.history.push({
             pathname: `/addBlog/${row.id}`
         })
     }
     return (
-        <>
-            
+        <>  
             <Row justify="space-between">
                 <Col span={20}>
                     <Form form={form} layout="inline" onFinish={onFinish} style={{paddingBottom: '24px'}}>
