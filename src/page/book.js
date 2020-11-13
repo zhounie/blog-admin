@@ -19,6 +19,9 @@ export default function Book (props) {
         onGetList()
     }, [searchParams])
     const [form] = Form.useForm()
+    const headers = {
+        'Authorization': sessionStorage.getItem('token')
+    }
     const columns = [
         {
             title: 'Name',
@@ -88,6 +91,7 @@ export default function Book (props) {
             if (res.code === 200) {
                 message.success('添加成功');
                 setVisible(false)
+                onGetList()
             } else {
                 message.error(res.msg);
             }
@@ -199,6 +203,7 @@ export default function Book (props) {
                             listType="picture-card"
                             className="avatar-uploader"
                             showUploadList={false}
+                            headers={headers}
                             action="/api/upload"
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
