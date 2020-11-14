@@ -9,4 +9,10 @@ module.exports = function(app) {
             }
         })
     )
+    app.use(
+        createProxyMiddleware('/upload', {
+            "target": "http://81.69.28.107:6868",
+            "changeOrgin": true
+        })
+    )
 }

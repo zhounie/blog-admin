@@ -136,7 +136,7 @@ export default function Book (props) {
         }
         if (info.file.status === 'done') {
             setLoading(false)
-            setImageUrl(info.file.response.data.imgUrl)
+            setImageUrl(info.file.response.data.img)
         }
     }
     return (
@@ -199,12 +199,12 @@ export default function Book (props) {
                         ]
                     }>
                         <Upload
-                            name="avatar"
+                            name="file"
                             listType="picture-card"
                             className="avatar-uploader"
                             showUploadList={false}
                             headers={headers}
-                            action="/api/upload"
+                            action="/upload"
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
                         >
