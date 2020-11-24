@@ -1,7 +1,7 @@
 import { Table, Form, Input, Button, Space, Tag, Row, Col, Modal, Select, message, Popconfirm, DatePicker } from 'antd'
 import { SearchOutlined } from '@ant-design/icons';
 import React, { useEffect, useState, useRef } from 'react'
-import { getBlogList, addBlog, deleteBlog } from '../../api/index'
+import { getBlogList, addBlog, deleteBlog, showBlog } from '../../api/index'
 const { Option  } = Select
 
 export default function Book (props) {
@@ -42,6 +42,9 @@ export default function Book (props) {
             key: 'action',
             render: (row) => (
                 <Space>
+                    {
+                        row.is_show === 1 ? <Button onClick={() => onShowBlog(row)} success="true">已发布</Button> : <Button onClick={() => onShowBlog(row)} success="true">未发布</Button>
+                    }
                     <Button success="true" onClick={() => onEditArticle(row)}>edit article</Button>
                     <Popconfirm
                         placement="topRight"
@@ -56,6 +59,16 @@ export default function Book (props) {
             )
         }
     ]
+    const onShowBlog = (row) => {
+        showBlog({
+            id: row.id,
+            isShow: row.is_show === 1 ? 0 : 1
+        }).then(res => {
+            if (res.code === 200) {
+                onGetList()
+            }
+        })
+    }
     const onGetList = () => {
         getBlogList(searchParams).then(res => {
             if (res.code === 200) {
