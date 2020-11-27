@@ -1,10 +1,6 @@
-import React from 'react'
+import React from "react";
 
-export default function Menu (props) {
-    console.log(props);
-    return (
-        <div>
-            menu
-        </div>
-    )
+export default function Menu(props) {
+  console.log(props);
+  return <div>menu</div>;
 }

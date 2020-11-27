@@ -98,6 +98,7 @@
   "devDependencies": {
     "http-proxy-middleware": "^1.0.6",
     "node-sass": "^4.0.0",
+    "prettier": "2.2.0",
     "sass-loader": "^10.0.5"
   },
   "jest": {
